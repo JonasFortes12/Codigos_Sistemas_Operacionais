@@ -1,3 +1,5 @@
+// Compilar: gcc -pthread -o tests tests.c
+// Executar: ./tests
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -14,7 +16,7 @@
 
   void yourturn() {
      while(2){
-         sleep(1);
+         sleep(2);
          printf("sua vez\n");
 
      }
