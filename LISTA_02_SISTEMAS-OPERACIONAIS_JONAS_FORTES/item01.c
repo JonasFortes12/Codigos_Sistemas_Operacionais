@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <pthread.h>
-#include<string.h>
+#include <string.h>
+#define N 100 //quantidade threads
 
-const int N = 10;//quantidade threads
-pthread_t tid[10];
+pthread_t tid[N];
 
 
 void* helloThread(void* arg){
@@ -16,12 +16,12 @@ void* helloThread(void* arg){
 
     if(pthread_equal(id, tid[0])){
         printf("Alo do Pai\n");
-        for(int j = 0; j<(0xFFFFFFFF); j++);//simular processamento
+        for(int j = 0; j<(0x0FFFFFFF); j++);//simular processamento
         printf("Thal do Pai\n");
        
     }else{
         printf("Alo do Filho [%d]\n", num);
-        for(int j = 0; j<(0xFFFFFFFF); j++);
+        for(int j = 0; j<(0x0FFFFFFF); j++);
         printf("Thal do Filho [%d]\n", num);
     }
     

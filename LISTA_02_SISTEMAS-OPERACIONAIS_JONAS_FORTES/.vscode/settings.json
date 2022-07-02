@@ -3,6 +3,7 @@
         "unistd.h": "c",
         "stdio.h": "c",
         "stdlib.h": "c",
-        "*.tcc": "c"
+        "*.tcc": "c",
+        "pthread.h": "c"
     }
 }
