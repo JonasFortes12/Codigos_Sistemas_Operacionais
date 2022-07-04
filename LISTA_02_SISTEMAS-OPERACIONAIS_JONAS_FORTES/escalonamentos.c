@@ -3,6 +3,8 @@
 #include <locale.h>
 #include <unistd.h>
 
+int numProcessGlobal;
+
 /*Process Struct */
 struct process{
     char id;
@@ -168,25 +170,36 @@ void schedulerSJF(Process* prss){
 }
 
 void schedulerRR(Process* prss, int quantum){  
-    
+    int cont = 0;
+   
     Process* prssAux = turnRound(prss);
 
     printf("________ESCALONAMENTO RR___________\n");
     while (prssAux != NULL){
     
         if((prssAux->length != 0 ) && (prssAux->length <= quantum)){
-
+            cont = 0;
+            
             printf("Processo %c executando [%d ut] final\n", prssAux->id, prssAux->length);
             sleep(prssAux->length);
             prssAux->length = 0;
             
             
         }else if(prssAux->length > quantum){
-
+            cont = 0;
+            
             printf("Processo %c executando %dut. Tamanho: [%d ut]\n", prssAux->id, quantum, prssAux->length);
             sleep(quantum);
             prssAux->length -= quantum ;
 
+        }else{
+            /*veirica de todos os outros processos terminaram*/
+            for(Process* i = prss; prss->length == 0; prss = prss->next){
+                cont++;
+                if(cont >= numProcessGlobal){
+                    exit(1);
+                } 
+            }
         }
 
         prssAux = prssAux->next;
@@ -203,6 +216,8 @@ void main(){
 
     printf("Quantidade de processos na fila: ");
     scanf("%d",&numProcess);
+
+    numProcessGlobal = numProcess;
 
     for(int i = 1; i <= numProcess; i++){
         printf("Digite um identificador para o %dº processo(char): ", i);
