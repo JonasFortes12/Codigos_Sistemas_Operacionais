@@ -6,6 +6,7 @@
         "*.tcc": "c",
         "pthread.h": "c",
         "math.h": "c",
-        "locale.h": "c"
+        "locale.h": "c",
+        "string.h": "c"
     }
 }

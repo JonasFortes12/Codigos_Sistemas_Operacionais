@@ -170,7 +170,7 @@ void schedulerSJF(Process* prss){
 }
 
 void schedulerRR(Process* prss, int quantum){  
-    int cont = 0;
+    int cont = 0; //variavel para controlar o fim dos processo
    
     Process* prssAux = turnRound(prss);
 
@@ -193,12 +193,10 @@ void schedulerRR(Process* prss, int quantum){
             prssAux->length -= quantum ;
 
         }else{
-            /*veirica de todos os outros processos terminaram*/
+            /*veirica se todos os outros processos terminaram para sair do loop*/
             for(Process* i = prss; prss->length == 0; prss = prss->next){
                 cont++;
-                if(cont >= numProcessGlobal){
-                    exit(1);
-                } 
+                if(cont >= numProcessGlobal) exit(1);
             }
         }
 

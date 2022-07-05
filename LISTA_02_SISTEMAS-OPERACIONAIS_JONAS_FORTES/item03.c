@@ -58,7 +58,7 @@ void *qntPrimo2(void *num){
 }
 
 
-void main(){
+int main(int argc, char *argv[]){
 
 	int n;
 	pthread_t thread1, thread2;
@@ -71,5 +71,7 @@ void main(){
 	pthread_join(thread2, NULL);
     
 	printf("Quantidade de numeros primos = %d\n", numPrimo);
+	
+	return 0;
 
 }
