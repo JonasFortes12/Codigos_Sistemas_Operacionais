@@ -1,6 +1,3 @@
-
-//execucao: gcc -pthread -o item02 item02.c -lm
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>

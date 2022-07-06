@@ -83,7 +83,7 @@ Process* insertShortestProcessFirst(Process* prss, int id, int lenght, int order
     Process* prssPrev = NULL;
     Process* prssAux = prss;
 
-    while(prssAux != NULL && prssAux->length < lenght){
+    while(prssAux != NULL && prssAux->length < lenght){//avanca ate achar a ordem correta
         
         prssPrev = prssAux;
         prssAux = prssAux->next;
@@ -169,9 +169,8 @@ void schedulerSJF(Process* prss){
 
 }
 
-void schedulerRR(Process* prss, int quantum){  
+void schedulerRR(Process* prss, int quantum){                                           
     int cont = 0; //variavel para controlar o fim dos processo
-   
     Process* prssAux = turnRound(prss);
 
     printf("________ESCALONAMENTO RR___________\n");
